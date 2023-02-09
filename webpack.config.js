@@ -6,8 +6,9 @@ module.exports = {
     client: path.join(__dirname, 'src', 'client', 'index.js'),
   },
   output: {
-    path: path.join(__dirname, 'public'),
+    path: path.join(__dirname, 'dist'),
     filename: '[name].bundle.js',
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -17,7 +18,7 @@ module.exports = {
         loader: 'babel-loader',
       },
       {
-        test: /\.(sa|c)ss$/,
+        test: /\.css$/,
         use: [
           'style-loader',
           'css-loader',
@@ -27,7 +28,10 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src', 'client', 'templates', 'index.html'),
+      template: path.join(__dirname, 'src', 'client', 'templates', 'index.ejs'),
+      favicon: path.join(__dirname, 'src', 'client', 'images', 'favicon.ico'),
+      filename: 'index.html',
+      inject: 'body',
     }),
   ],
   devServer: {

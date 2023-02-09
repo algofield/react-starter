@@ -1,18 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  render() {
-    return (
-      <div>
-        <h1>Hello World.</h1>
-      </div>
-    )
-  }
+function App() {
+  const [count, setCount] = useState(0)
+  return (
+    <div>
+      <h1>Hello World.</h1>
+      <p>The count is {count}</p>
+      <button onClick={() => setCount((count) => count + 1)}>+</button>
+      <button onClick={() => setCount((count) => count - 1)}>-</button>
+      <button onClick={() => setCount((count) => 0)}>Reset</button>
+    </div>
+  )
 }
 
 export default App;
